@@ -3,7 +3,7 @@ import Links from "./components/links";
 import Name from "./components/name";
 import Navbar from "./components/navbar";
 
-export default function Home() {
+const Home = () => {
   return (
     <main>
       <div className="flex flex-row">
@@ -21,4 +21,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Home;

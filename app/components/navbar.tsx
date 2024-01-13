@@ -8,27 +8,27 @@ import AboutSVG from "../../public/user-svgrepo-com.svg";
 
 type NavitemProp = {
   text: string;
-  img: any;
+  emoji: string;
 };
 
 const Navbar = () => {
   return (
     <div className="flex flex-col p-5 min-h-screen">
-      <Navitem text="About" img={""} />
-      <Navitem text="Experience" img={""} />
-      <Navitem text="Music" img={""} />
-      <Navitem text="Contact" img={""} />
+      <Navitem text="About" emoji="📝" />
+      <Navitem text="Experience" emoji="💼" />
+      <Navitem text="Music" emoji="🎧" />
+      <Navitem text="Contact" emoji="☎️" />
     </div>
   );
 };
 
 const Navitem = (navitem: NavitemProp) => {
   return (
-    <div className="flex flex-row m-5">
-      <Link className="" href={"/" + navitem.text}>
+    <div className="flex flex-row m-5 gap-4 justify-start">
+      <Link className="" href={"/" + navitem.text.toLowerCase}>
         <p className="text-2xl">{navitem.text}</p>
       </Link>
-      {/* <img src={""} style={{ height: 50, width: 50 }} alt="navigation image" /> */}
+      <div className="text-2xl">{navitem.emoji}</div>
     </div>
   );
 };
