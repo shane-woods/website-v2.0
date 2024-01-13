@@ -1,34 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import home from "../../public/home-2-svgrepo-com.svg";
-import blog from "../../public/blog-comment-edit-svgrepo-com.svg";
-import random from "../../public/random-1dice-svgrepo-com.svg";
-import about from "../../public/user-svgrepo-com.svg";
+import homeurl from "../../public/home-2-svgrepo-com.svg";
+import BlogSVG from "../../public/journal-bookmark-fill-svgrepo-com.svg";
+import MusicSVG from "../../public/music-svgrepo-com.svg";
+import AboutSVG from "../../public/user-svgrepo-com.svg";
 
 type NavitemProp = {
   text: string;
-  img: string;
+  img: any;
 };
 
 const Navbar = () => {
   return (
-    <div className="flex flex-col justify-start p-5 min-h-screen border-r-2 border-r-black">
-      <Navitem text="Home" img={home} />
-      <Navitem text="Blog" img={blog} />
-      <Navitem text="Random" img={random} />
-      <Navitem text="About" img={about} />
+    <div className="flex flex-col p-5 min-h-screen">
+      <Navitem text="About" img={""} />
+      <Navitem text="Experience" img={""} />
+      <Navitem text="Music" img={""} />
+      <Navitem text="Contact" img={""} />
     </div>
   );
 };
 
 const Navitem = (navitem: NavitemProp) => {
   return (
-    <div className="flex flex-row items-center justify-start m-5">
-      <Link className="mr-2" href={"/" + navitem.text}>
+    <div className="flex flex-row m-5">
+      <Link className="" href={"/" + navitem.text}>
         <p className="text-2xl">{navitem.text}</p>
       </Link>
-      <Image src={navitem.img} alt="navbar item" height={25} width={25} />
+      {/* <img src={""} style={{ height: 50, width: 50 }} alt="navigation image" /> */}
     </div>
   );
 };

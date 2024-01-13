@@ -1,15 +1,22 @@
+import Footer from "./components/footer";
+import Links from "./components/links";
+import Name from "./components/name";
 import Navbar from "./components/navbar";
 
 export default function Home() {
   return (
     <main>
       <div className="flex flex-row">
-        <Navbar />
-        <div className="flex flex-col min-h-screen items-center m-5 justify-between">
-          <p className="font-bold text-3xl">
-            Shane Woods&apos;s Personal Website
-          </p>
-          <p className="text-lg">Version 2.0</p>
+        <div className="flex flex-col">
+          <Name />
+          <Navbar />
+          <Links />
+        </div>
+        <div className="flex flex-col justify-center w-full">
+          <div className="flex flex-col min-h-screen m-5 justify-evenly">
+            <div className="flex flex-col items-center"></div>
+          </div>
+          <Footer />
         </div>
       </div>
     </main>
