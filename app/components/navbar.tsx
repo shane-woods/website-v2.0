@@ -23,9 +23,10 @@ const Navbar = () => {
 };
 
 const Navitem = (navitem: NavitemProp) => {
+  const lowerCase: string = navitem.text.toLowerCase();
   return (
     <div className="flex flex-row m-5 gap-4 justify-start">
-      <Link className="" href={"/" + navitem.text.toLowerCase}>
+      <Link className="" href={"/" + navitem.text.toLowerCase()}>
         <p className="text-2xl">{navitem.text}</p>
       </Link>
       <div className="text-2xl">{navitem.emoji}</div>
