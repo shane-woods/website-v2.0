@@ -1,3 +1,4 @@
+"use client";
 import Footer from "./components/footer";
 import Links from "./components/links";
 import Name from "./components/name";
