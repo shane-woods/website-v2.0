@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 // Initialize the JS client
 import { createClient } from "@supabase/supabase-js";
 const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_ANON_KEY!
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
 interface Book {
@@ -26,6 +26,7 @@ const Books: React.FC = () => {
       if (error) {
         console.log("REQUEST FAILED");
       } else {
+        console.log(data);
       }
     };
 
