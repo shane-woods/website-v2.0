@@ -17,6 +17,7 @@ const Navbar = () => {
       <Navitem text="About" emoji="📝" />
       <Navitem text="Experience" emoji="💼" />
       <Navitem text="Music" emoji="🎧" />
+      <Navitem text="Books" emoji="📚" />
       <Navitem text="Contact" emoji="☎️" />
     </div>
   );
