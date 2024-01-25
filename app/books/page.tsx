@@ -1,46 +1,50 @@
 "use client";
 import { useState, useEffect } from "react";
-// Initialize the JS client
-import { createClient } from "@supabase/supabase-js";
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+import { createBrowserClient } from "@supabase/ssr";
+import Name from "../components/name";
+import Navbar from "../components/navbar";
+import Links from "../components/links";
+import BookList from "../components/booklist";
 
-interface Book {
+type Book = {
   id: number;
   title: string;
-  img_url: string;
   author: string;
   currently_reading: boolean;
   num_stars: number;
-}
+  img_url: string;
+};
 
 const Books: React.FC = () => {
-  const [books, setBooks] = useState<[]>([]);
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  );
+
+  const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
     // Fetch the list of books when the component mounts
     const fetchData = async () => {
       const { data, error } = await supabase.from("books").select();
       if (error) {
-        console.log("REQUEST FAILED");
       } else {
-        console.log(data);
+        setBooks(data);
       }
     };
 
     fetchData();
   }, []);
 
+  console.log(books);
   return (
-    <div>
-      <h1>Books</h1>
-      <ul>
-        {/* {books.map((book) => (
-          <li key={book.id}>{book.title}</li>
-        ))} */}
-      </ul>
+    <div className="flex flex-row">
+      <div className="flex flex-col">
+        <Name />
+        <Navbar />
+        <Links />
+      </div>
+      <BookList data={books} />
     </div>
   );
 };
