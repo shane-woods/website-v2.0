@@ -22,6 +22,7 @@ const Dashboard = () => {
       <div className="flex flex-col space-y-3 items-center justify-start min-h-screen">
         <DashLink text="Add a Book 📚" path="addbook" />
         <DashLink text="Delete a Book 📚" path="deletebook" />
+        <DashLink text="Update a Book 📚" path="updatebook" />
       </div>
     </div>
   );

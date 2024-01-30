@@ -1,8 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { User } from "@supabase/supabase-js";
 import { createBrowserClient } from "@supabase/ssr";
-import SignOut from "@/app/components/signout";
 import DashHeader from "@/app/components/dashheader";
 
 const AddBook = () => {

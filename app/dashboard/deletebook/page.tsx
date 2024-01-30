@@ -1,16 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { User } from "@supabase/supabase-js";
 import { createBrowserClient } from "@supabase/ssr";
-import SignOut from "@/app/components/signout";
 import DashHeader from "@/app/components/dashheader";
 
 type Book = {
   id: number;
   title: string;
   author: string;
-  currentlyReading: boolean;
-  numStars: number;
+  currently_reading: boolean;
+  num_stars: number;
+  img_url: string;
 };
 
 const DeleteBook = () => {

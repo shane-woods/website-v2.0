@@ -36,7 +36,6 @@ const Books: React.FC = () => {
     fetchData();
   }, []);
 
-  console.log(books);
   return (
     <div className="flex flex-row">
       <div className="flex flex-col">

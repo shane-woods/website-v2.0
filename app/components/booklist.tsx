@@ -12,23 +12,25 @@ type Book = {
 };
 
 const BookList = ({ data }: { data: Book[] }) => {
+  const currentlyReadingBooks = data.filter((book) => book.currently_reading);
+  const readBooks = data.filter((book) => !book.currently_reading);
+
   return (
-    <div className="flex flex-col w-full items-center pt-12 space-y-12">
+    <div className="flex flex-col w-full items-center py-12 space-y-12">
       <h1 className="p-3 text-5xl">Books</h1>
-      <div className="flex flex-row space-x-28">
-        {data.map((book) => (
-          <div className="flex flex-col" key={book.id}>
-            <Image
-              src={book.img_url}
-              alt="image of book cover"
-              height={300}
-              width={230}
-            />
-            <div className="text-lg font-bold">{book.title}</div>
-            <div className="text-md">by {book.author}</div>
-            <Stars rating={book.num_stars} />
-          </div>
+      <div className="flex flex-col items-center">
+        <div className="p-3 mb-3 text-3xl">Currently Reading</div>
+        {currentlyReadingBooks.map((book) => (
+          <Book book={book} />
         ))}
+      </div>
+      <div className="flex flex-col items-center">
+        <div className="p-3 mb-3 text-3xl">Books I've read</div>
+        <div className="flex flex-row space-x-28">
+          {readBooks.map((book) => (
+            <Book book={book} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -36,6 +38,7 @@ const BookList = ({ data }: { data: Book[] }) => {
 
 type StarProp = {
   rating: number;
+  current: boolean;
 };
 
 const Stars = (prop: StarProp) => {
@@ -47,10 +50,50 @@ const Stars = (prop: StarProp) => {
   return (
     <div className="flex flex-row">
       {starsArray.map((starNumber) => (
-        <div key={starNumber} className="text-yellow-500 text-2xl">
-          ⭐️
+        <div>
+          {prop.current ? (
+            <div key={starNumber} className="text-2xl">
+              ⭐️
+            </div>
+          ) : (
+            <div key={starNumber} className="text-lg">
+              ⭐️
+            </div>
+          )}
         </div>
       ))}
+    </div>
+  );
+};
+
+const Book = ({ book }: { book: Book }) => {
+  return (
+    <div className="flex flex-col" key={book.id}>
+      {book.currently_reading ? (
+        <div>
+          <Image
+            src={book.img_url}
+            alt="image of book cover"
+            height={300}
+            width={230}
+          />
+          <div className="text-lg font-bold">{book.title}</div>
+          <div className="text-md">by {book.author}</div>
+          <Stars rating={book.num_stars} current={book.currently_reading} />
+        </div>
+      ) : (
+        <div>
+          <Image
+            src={book.img_url}
+            alt="image of book cover"
+            height={150}
+            width={80}
+          />
+          <div className="text-md font-bold">{book.title}</div>
+          <div className="text-sm">by {book.author}</div>
+          <Stars rating={book.num_stars} current={book.currently_reading} />
+        </div>
+      )}
     </div>
   );
 };
