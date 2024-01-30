@@ -50,55 +50,61 @@ const AddBook = () => {
   return (
     <div>
       <DashHeader />
-      <div className="flex flex-col min-h-screen justify-start items-center space-y-2">
-        <div className="text-2xl">Add a Book</div>
-        <div className="flex flex-col space-y-3">
-          <label>Title</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(ev) => setTitle(ev.target.value)}
-            className="p-2 border border-black rounded-md"
-          />
-          <label>Author</label>
-          <input
-            type="text"
-            value={author}
-            onChange={(ev) => setAuthor(ev.target.value)}
-            className="p-2 border border-black rounded-md"
-          />
-          <label>Are you currently reading this book?</label>
-          <select
-            onChange={(ev) => handleCurrentlyReading(ev)}
-            className="p-2 border border-black rounded-md"
-            defaultValue={"no"}
-          >
-            <option value="no">No</option>
-            <option value="yes">Yes</option>
-          </select>
-          <label>Number of Stars out of 5</label>
-          <select
-            onChange={(ev) => setNumStars(parseInt(ev.target.value))}
-            className="p-2 border border-black rounded-md"
-            defaultValue={numStars.toString()}
-          >
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <label>URL for image of book cover</label>
-          <input
-            type="text"
-            value={imgUrl}
-            onChange={(ev) => setImageUrl(ev.target.value)}
-            className="p-2 border border-black rounded-md"
-          />
+      <div className="flex flex-col min-h-screen justify-start items-center space-y-8">
+        <div className="text-4xl">Add a Book</div>
+        <div className="flex flex-row space-x-24">
+          <div className="flex flex-col">
+            <label className="text-md">Title</label>
+            <input
+              type="text"
+              value={title}
+              onChange={(ev) => setTitle(ev.target.value)}
+              className="p-2 border border-black rounded-md"
+            />
+            <label>Author</label>
+            <input
+              type="text"
+              value={author}
+              onChange={(ev) => setAuthor(ev.target.value)}
+              className="p-2 border border-black rounded-md"
+            />
+            <label>Are you currently reading this book?</label>
+            <select
+              onChange={(ev) => handleCurrentlyReading(ev)}
+              className="p-2 border border-black rounded-md"
+              defaultValue={"no"}
+            >
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+          <div className="flex flex-col">
+            <label>Number of Stars out of 5</label>
+            <select
+              onChange={(ev) => setNumStars(parseInt(ev.target.value))}
+              className="p-2 border border-black rounded-md"
+              defaultValue={numStars.toString()}
+            >
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <label>URL for image of book cover</label>
+            <input
+              type="text"
+              value={imgUrl}
+              onChange={(ev) => setImageUrl(ev.target.value)}
+              className="p-2 border border-black rounded-md"
+            />
+          </div>
+        </div>
+        <div className="">
           <button
             onClick={insertData}
-            className="p-2 border border-black bg-blue-500 rounded-md"
+            className="p-2 border border-black bg-blue-400 rounded-md"
           >
             Add Book
           </button>

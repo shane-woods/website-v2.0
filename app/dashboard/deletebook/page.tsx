@@ -85,7 +85,7 @@ const DeleteBook = () => {
                 Selected Book: {selectedBook.title} by {selectedBook.author}
               </p>
               <button
-                className="p-2 border border-black bg-blue-500 rounded-md"
+                className="p-2 border border-black bg-blue-400 rounded-md"
                 onClick={handleDelete}
               >
                 Delete Book

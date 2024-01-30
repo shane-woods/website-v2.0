@@ -19,7 +19,7 @@ const SignOut: React.FC = () => {
   return (
     <div>
       <button
-        className="border border-black rounded-md bg-blue-500 p-2"
+        className="border border-black rounded-md bg-blue-400 p-2"
         onClick={signOut}
       >
         Sign Out
