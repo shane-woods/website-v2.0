@@ -1,9 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { createBrowserClient } from "@supabase/ssr";
-import Name from "../components/name";
 import Navbar from "../components/navbar";
-import Links from "../components/links";
 import BookList from "../components/booklist";
 
 type Book = {
@@ -39,9 +37,7 @@ const Books: React.FC = () => {
   return (
     <div className="flex flex-row">
       <div className="flex flex-col">
-        <Name />
         <Navbar />
-        <Links />
       </div>
       <BookList data={books} />
     </div>

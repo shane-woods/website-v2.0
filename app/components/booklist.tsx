@@ -36,6 +36,38 @@ const BookList = ({ data }: { data: Book[] }) => {
   );
 };
 
+const Book = ({ book }: { book: Book }) => {
+  return (
+    <div className="flex flex-col" key={book.id}>
+      {book.currently_reading ? (
+        <div>
+          <Image
+            src={book.img_url}
+            alt="image of book cover"
+            height={300}
+            width={230}
+          />
+          <div className="text-lg font-bold mt-1">{book.title}</div>
+          <div className="text-md">by {book.author}</div>
+          <Stars rating={book.num_stars} current={book.currently_reading} />
+        </div>
+      ) : (
+        <div>
+          <Image
+            src={book.img_url}
+            alt="image of book cover"
+            height={150}
+            width={80}
+          />
+          <div className="text-md font-bold mt-1">{book.title}</div>
+          <div className="text-sm">by {book.author}</div>
+          <Stars rating={book.num_stars} current={book.currently_reading} />
+        </div>
+      )}
+    </div>
+  );
+};
+
 type StarProp = {
   rating: number;
   current: boolean;
@@ -62,38 +94,6 @@ const Stars = (prop: StarProp) => {
           )}
         </div>
       ))}
-    </div>
-  );
-};
-
-const Book = ({ book }: { book: Book }) => {
-  return (
-    <div className="flex flex-col" key={book.id}>
-      {book.currently_reading ? (
-        <div>
-          <Image
-            src={book.img_url}
-            alt="image of book cover"
-            height={300}
-            width={230}
-          />
-          <div className="text-lg font-bold">{book.title}</div>
-          <div className="text-md">by {book.author}</div>
-          <Stars rating={book.num_stars} current={book.currently_reading} />
-        </div>
-      ) : (
-        <div>
-          <Image
-            src={book.img_url}
-            alt="image of book cover"
-            height={150}
-            width={80}
-          />
-          <div className="text-md font-bold">{book.title}</div>
-          <div className="text-sm">by {book.author}</div>
-          <Stars rating={book.num_stars} current={book.currently_reading} />
-        </div>
-      )}
     </div>
   );
 };

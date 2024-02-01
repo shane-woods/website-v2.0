@@ -1,6 +1,7 @@
 // app/music/page.tsx
 "use client";
 import React, { useState, useEffect } from "react";
+import Navbar from "../components/navbar";
 
 const Music: React.FC = () => {
   const [likedSongs, setLikedSongs] = useState([]);
@@ -22,15 +23,10 @@ const Music: React.FC = () => {
   // }, []); // Run the effect only once on mount
 
   return (
-    <div>
-      <h1>My Liked Songs</h1>
-      <ul>
-        {/* {likedSongs.map((song) => (
-          <li key={song.id}>
-            {song.name} by {song.artists[0].name}
-          </li>
-        ))} */}
-      </ul>
+    <div className="flex flex-row">
+      <div className="flex flex-col">
+        <Navbar />
+      </div>
     </div>
   );
 };
