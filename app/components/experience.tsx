@@ -1,11 +1,14 @@
 "use client";
-import React, { ForwardRefRenderFunction, Ref } from "react";
+import React from "react";
 import Navbar from "./navbar";
 
 const Experience = React.forwardRef<HTMLDivElement>(
   ({}, ref: React.ForwardedRef<HTMLDivElement>) => {
     return (
-      <div ref={ref} className="flex flex-col items-center justify-center">
+      <div
+        ref={ref}
+        className="flex flex-col space-y-10 w-full items-center justify-center pt-16"
+      >
         <ExperienceCard
           company="Fidelity Investments"
           title="Full Stack Software Engineer"
@@ -43,7 +46,7 @@ type CardProp = {
 };
 const ExperienceCard = (info: CardProp) => {
   return (
-    <div className="m-7 shadow-[0_3px_10px_rgb(0,0,0,0.7)] flex flex-col space-y-3 h-auto p-5 border w-full rounded-lg">
+    <div className="shadow-[0_3px_10px_rgb(0,0,0,0.7)] flex flex-col space-y-3 h-auto p-5 border w-11/12 rounded-lg">
       <div className="font-bold text-2xl">{info.title}</div>
       <div className="text-lg">{info.company}</div>
       <div className="text-sm text-gray-500">{info.date}</div>

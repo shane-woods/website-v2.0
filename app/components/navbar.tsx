@@ -79,9 +79,15 @@ const Links = () => {
     "https://uolyxvlqilyhwhgtuqah.supabase.co/storage/v1/object/sign/website-logos/spotify-color-svgrepo-com.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ3ZWJzaXRlLWxvZ29zL3Nwb3RpZnktY29sb3Itc3ZncmVwby1jb20ucG5nIiwiaWF0IjoxNzA3MDk2NjM4LCJleHAiOjIwMjI0NTY2Mzh9.6cGwuLfglUQtGzew4OPEKnAJ0UrPi89VuYZaA3USYlk&t=2024-02-05T01%3A30%3A38.215Z";
   return (
     <div className="flex flex-row p-5 space-x-3 ">
-      <Image src={gmail_url} height={30} width={30} alt="Gmail logo" />
-      <Image src={linkedin_url} height={30} width={30} alt="LinkedIn logo" />
-      <Image src={spotify_url} height={30} width={30} alt="Spotify logo" />
+      <Link href="mailto:shwoods35@gmail.com">
+        <Image src={gmail_url} height={30} width={30} alt="Gmail logo" />
+      </Link>
+      <Link href="https://www.linkedin.com/in/shane-woods-cs/">
+        <Image src={linkedin_url} height={30} width={30} alt="LinkedIn logo" />
+      </Link>
+      <Link href="https://open.spotify.com/user/shwoods35">
+        <Image src={spotify_url} height={30} width={30} alt="Spotify logo" />
+      </Link>
     </div>
   );
 };

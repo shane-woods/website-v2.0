@@ -36,7 +36,7 @@ const Books = React.forwardRef<HTMLDivElement>(
     }, []);
 
     return (
-      <div ref={ref}>
+      <div ref={ref} className="w-full pt-16">
         <BookList data={books} />
       </div>
     );

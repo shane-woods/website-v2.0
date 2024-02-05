@@ -23,7 +23,7 @@ const Music = React.forwardRef<HTMLDivElement>(
     //   fetchLikedSongs();
     // }, []); // Run the effect only once on mount
 
-    return <div ref={ref} className="flex flex-row"></div>;
+    return <div ref={ref} className="flex flex-row w-full pt-16"></div>;
   }
 );
 

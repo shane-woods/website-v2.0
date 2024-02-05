@@ -1,5 +1,5 @@
 "use client";
-import { MutableRefObject, useRef } from "react";
+import { MutableRefObject, RefObject, useRef } from "react";
 import About from "./components/about";
 import Books from "./components/books";
 import Contact from "./components/contact";
@@ -17,10 +17,10 @@ const Home = () => {
   const contactRef = useRef<HTMLDivElement>(null);
 
   const handleClick = (targetId: string) => {
-    const targetRef = getTargetRef(targetId);
-
+    const targetRef: RefObject<HTMLElement> | null = getTargetRef(targetId);
     if (targetRef && targetRef.current) {
-      targetRef.current.scrollIntoView({ behavior: "smooth" });
+      const y = targetRef.current.getBoundingClientRect().top;
+      targetRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -47,7 +47,7 @@ const Home = () => {
     <main>
       <div className="flex flex-row">
         <Navbar handleClick={handleClick} />
-        <div ref={homeRef} className=" absolute left-80 flex flex-col ">
+        <div ref={homeRef} className=" absolute left-72 flex flex-col ">
           <div className="flex flex-col items-center min-h-screen m-5 justify-evenly">
             <About ref={aboutRef} />
             <Experience ref={experienceRef} />

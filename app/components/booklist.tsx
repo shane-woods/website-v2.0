@@ -16,7 +16,7 @@ const BookList = ({ data }: { data: Book[] }) => {
   const readBooks = data.filter((book) => !book.currently_reading);
 
   return (
-    <div className="flex flex-col w-full items-center py-12 space-y-12">
+    <div className="flex flex-col w-full items-center space-y-12">
       <h1 className="p-3 text-5xl">Books</h1>
       <div className="flex flex-col items-center">
         <div className="p-3 mb-3 text-3xl">Currently Reading</div>
@@ -25,7 +25,7 @@ const BookList = ({ data }: { data: Book[] }) => {
         ))}
       </div>
       <div className="flex flex-col items-center">
-        <div className="p-3 mb-3 text-3xl">Books I've read</div>
+        <div className="p-3 mb-3 text-3xl">Books read in 2024</div>
         <div className="flex flex-row space-x-28">
           {readBooks.map((book, index) => (
             <Book book={book} />
