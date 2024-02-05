@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { createBrowserClient } from "@supabase/ssr";
-import Navbar from "../components/navbar";
-import BookList from "../components/booklist";
+import Navbar from "./navbar";
+import BookList from "./booklist";
 
 type Book = {
   id: number;
@@ -14,6 +14,18 @@ type Book = {
 };
 
 const Books: React.FC = () => {
+  const handleClick = (targetId: string) => {
+    console.log(`targetId: ${targetId}`);
+    const targetElement = document.getElementById(targetId);
+    console.log(`target: ${targetElement}`);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 70, // Adjust the offset based on your layout
+        behavior: "smooth",
+      });
+    }
+  };
+
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -34,14 +46,7 @@ const Books: React.FC = () => {
     fetchData();
   }, []);
 
-  return (
-    <div className="flex flex-row">
-      <div className="flex flex-col">
-        <Navbar />
-      </div>
-      <BookList data={books} />
-    </div>
-  );
+  return <BookList data={books} />;
 };
 
 export default Books;

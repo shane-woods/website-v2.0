@@ -1,7 +1,7 @@
 // app/music/page.tsx
 "use client";
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/navbar";
+import Navbar from "./navbar";
 
 const Music: React.FC = () => {
   const [likedSongs, setLikedSongs] = useState([]);
@@ -22,13 +22,7 @@ const Music: React.FC = () => {
   //   fetchLikedSongs();
   // }, []); // Run the effect only once on mount
 
-  return (
-    <div className="flex flex-row">
-      <div className="flex flex-col">
-        <Navbar />
-      </div>
-    </div>
-  );
+  return <div id="music" className="flex flex-row"></div>;
 };
 
 export default Music;
