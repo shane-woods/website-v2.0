@@ -1,5 +1,5 @@
 "use client";
-import { MouseEventHandler } from "react";
+import { MutableRefObject, useRef } from "react";
 import About from "./components/about";
 import Books from "./components/books";
 import Contact from "./components/contact";
@@ -9,33 +9,51 @@ import Music from "./components/music";
 import Navbar from "./components/navbar";
 
 const Home = () => {
+  const homeRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const experienceRef = useRef<HTMLDivElement>(null);
+  const musicRef = useRef<HTMLDivElement>(null);
+  const booksRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+
   const handleClick = (targetId: string) => {
-    console.log(`targetId: ${targetId}`);
-    const targetElement = document.getElementById(targetId);
-    console.log(`target: ${targetElement}`);
-    if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop - 70, // Adjust the offset based on your layout
-        behavior: "smooth",
-      });
+    const targetRef = getTargetRef(targetId);
+
+    if (targetRef && targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const getTargetRef = (targetId: string) => {
+    switch (targetId) {
+      case "home":
+        return homeRef;
+      case "about":
+        return aboutRef;
+      case "experience":
+        return experienceRef;
+      case "music":
+        return musicRef;
+      case "books":
+        return booksRef;
+      case "contact":
+        return contactRef;
+      default:
+        return null;
     }
   };
 
   return (
     <main>
       <div className="flex flex-row">
-        <div className="flex flex-col">
-          <Navbar handleClick={handleClick} />
-        </div>
-        <div className="flex flex-col justify-center w-full">
-          <div className="flex flex-col min-h-screen m-5 justify-evenly">
-            <div className="flex flex-col items-center">
-              <About />
-              <Experience />
-              <Music />
-              <Books />
-              <Contact />
-            </div>
+        <Navbar handleClick={handleClick} />
+        <div ref={homeRef} className=" absolute left-80 flex flex-col ">
+          <div className="flex flex-col items-center min-h-screen m-5 justify-evenly">
+            <About ref={aboutRef} />
+            <Experience ref={experienceRef} />
+            <Music ref={musicRef} />
+            <Books ref={booksRef} />
+            <Contact ref={contactRef} />
           </div>
           <Footer />
         </div>

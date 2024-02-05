@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
-import Navbar from "./navbar";
 
-const About = () => {
-  return <div id="about" className="flex flex-row"></div>;
-};
+const About = React.forwardRef<HTMLDivElement>(
+  ({}, ref: React.ForwardedRef<HTMLDivElement>) => {
+    return <div ref={ref} className="flex flex-row"></div>;
+  }
+);
 
 export default About;

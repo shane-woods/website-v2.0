@@ -16,25 +16,56 @@ type NavbarProp = {
 const Navbar = (prop: NavbarProp) => {
   return (
     <>
-      <div className="fixed flex flex-col p-5 min-w-max justify-evenly min-h-screen">
-        <Name />
-        <Navitem text="About" emoji="📝" handleClick={prop.handleClick} />
-        <Navitem text="Experience" emoji="💼" handleClick={prop.handleClick} />
-        <Navitem text="Music" emoji="🎧" handleClick={prop.handleClick} />
-        <Navitem text="Books" emoji="📚" handleClick={prop.handleClick} />
-        <Navitem text="Contact" emoji="☎️" handleClick={prop.handleClick} />
+      <div className="fixed flex flex-col p-5 min-w-max min-h-screen">
+        <Name handleClick={() => prop.handleClick("home")} />
+        <Navitem
+          text="About"
+          emoji="📝"
+          handleClick={() => prop.handleClick("about")}
+        />
+        <Navitem
+          text="Experience"
+          emoji="💼"
+          handleClick={() => prop.handleClick("experience")}
+        />
+        <Navitem
+          text="Music"
+          emoji="🎧"
+          handleClick={() => prop.handleClick("music")}
+        />
+        <Navitem
+          text="Books"
+          emoji="📚"
+          handleClick={() => prop.handleClick("books")}
+        />
+        <Navitem
+          text="Contact"
+          emoji="☎️"
+          handleClick={() => prop.handleClick("contact")}
+        />
         <Links />
       </div>
     </>
   );
 };
 
-const Name = () => {
+type NameProp = {
+  handleClick: (targetId: string) => void;
+};
+
+const Name = (prop: NameProp) => {
+  const onClick = () => {
+    const targetId = "home";
+    prop.handleClick(targetId);
+  };
   return (
     <div className="flex flex-col p-3 m-3">
-      <Link href="/">
-        <div className="font-bold text-3xl text-center">Shane Woods</div>
-      </Link>
+      <div
+        onClick={onClick}
+        className="font-bold text-3xl text-center cursor-pointer"
+      >
+        Shane Woods
+      </div>
     </div>
   );
 };

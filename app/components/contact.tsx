@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
-import Navbar from "./navbar";
 
-const Contact = () => {
-  return <div id="conact" className="flex flex-row"></div>;
-};
+const Contact = React.forwardRef<HTMLDivElement>(
+  ({}, ref: React.ForwardedRef<HTMLDivElement>) => {
+    return <div ref={ref} className="flex flex-row"></div>;
+  }
+);
 
 export default Contact;

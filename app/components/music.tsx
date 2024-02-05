@@ -3,26 +3,28 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./navbar";
 
-const Music: React.FC = () => {
-  const [likedSongs, setLikedSongs] = useState([]);
+const Music = React.forwardRef<HTMLDivElement>(
+  ({}, ref: React.ForwardedRef<HTMLDivElement>) => {
+    const [likedSongs, setLikedSongs] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchLikedSongs = async () => {
-  //     try {
-  //       // Fetch liked songs from the API route
-  //       const response = await fetch("/api/liked-songs");
-  //       const data = await response.json();
+    // useEffect(() => {
+    //   const fetchLikedSongs = async () => {
+    //     try {
+    //       // Fetch liked songs from the API route
+    //       const response = await fetch("/api/liked-songs");
+    //       const data = await response.json();
 
-  //       setLikedSongs(data.likedSongs);
-  //     } catch (error) {
-  //       console.error("Error fetching liked songs:", error);
-  //     }
-  //   };
+    //       setLikedSongs(data.likedSongs);
+    //     } catch (error) {
+    //       console.error("Error fetching liked songs:", error);
+    //     }
+    //   };
 
-  //   fetchLikedSongs();
-  // }, []); // Run the effect only once on mount
+    //   fetchLikedSongs();
+    // }, []); // Run the effect only once on mount
 
-  return <div id="music" className="flex flex-row"></div>;
-};
+    return <div ref={ref} className="flex flex-row"></div>;
+  }
+);
 
 export default Music;

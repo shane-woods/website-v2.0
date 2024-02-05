@@ -1,37 +1,39 @@
 "use client";
-import React from "react";
+import React, { ForwardRefRenderFunction, Ref } from "react";
 import Navbar from "./navbar";
 
-const Experience = () => {
-  return (
-    <div className="flex flex-col items-center justify-center mx-64 mt-5">
-      <ExperienceCard
-        company="Fidelity Investments"
-        title="Full Stack Software Engineer"
-        date="Starting June 2024"
-        description="Front and Backend developer"
-      />
-      <ExperienceCard
-        company="Fideliy Investments"
-        title="Full Stack Enginering Intern"
-        date="June 2023 - August 2023"
-        description="Created Power BI Reports for the Cloud Data Analytics team in the CAPE business unit"
-      />
-      <ExperienceCard
-        company="IMAP Student Collaboration"
-        title="Research Assitant"
-        date="Since November 2021"
-        description="Developed firmware for scientific instruments on a NASA funded research project to build and deploy a small satellite called a CubeSat"
-      />
-      <ExperienceCard
-        company="UNH Wrestling Club"
-        title="President and Captain"
-        date="November 2021 - November 2022"
-        description="Planned tournaments, coordinated meetings & managed club's finances"
-      />
-    </div>
-  );
-};
+const Experience = React.forwardRef<HTMLDivElement>(
+  ({}, ref: React.ForwardedRef<HTMLDivElement>) => {
+    return (
+      <div ref={ref} className="flex flex-col items-center justify-center">
+        <ExperienceCard
+          company="Fidelity Investments"
+          title="Full Stack Software Engineer"
+          date="Starting June 2024"
+          description="Front and Backend developer"
+        />
+        <ExperienceCard
+          company="Fideliy Investments"
+          title="Full Stack Enginering Intern"
+          date="June 2023 - August 2023"
+          description="Created Power BI Reports for the Cloud Data Analytics team in the CAPE business unit"
+        />
+        <ExperienceCard
+          company="IMAP Student Collaboration"
+          title="Research Assitant"
+          date="Since November 2021"
+          description="Developed firmware for scientific instruments on a NASA funded research project to build and deploy a small satellite called a CubeSat"
+        />
+        <ExperienceCard
+          company="UNH Wrestling Club"
+          title="President and Captain"
+          date="November 2021 - November 2022"
+          description="Planned tournaments, coordinated meetings & managed club's finances"
+        />
+      </div>
+    );
+  }
+);
 
 type CardProp = {
   company: string;

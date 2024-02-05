@@ -27,7 +27,7 @@ const BookList = ({ data }: { data: Book[] }) => {
       <div className="flex flex-col items-center">
         <div className="p-3 mb-3 text-3xl">Books I've read</div>
         <div className="flex flex-row space-x-28">
-          {readBooks.map((book) => (
+          {readBooks.map((book, index) => (
             <Book book={book} />
           ))}
         </div>
@@ -38,7 +38,7 @@ const BookList = ({ data }: { data: Book[] }) => {
 
 const Book = ({ book }: { book: Book }) => {
   return (
-    <div className="flex flex-col" key={book.id}>
+    <div key={book.id} className="flex flex-col">
       {book.currently_reading ? (
         <div>
           <Image
@@ -82,15 +82,11 @@ const Stars = (prop: StarProp) => {
   return (
     <div className="flex flex-row">
       {starsArray.map((starNumber) => (
-        <div>
+        <div key={starNumber}>
           {prop.current ? (
-            <div key={starNumber} className="text-2xl">
-              ⭐️
-            </div>
+            <div className="text-2xl">⭐️</div>
           ) : (
-            <div key={starNumber} className="text-lg">
-              ⭐️
-            </div>
+            <div className="text-lg">⭐️</div>
           )}
         </div>
       ))}
