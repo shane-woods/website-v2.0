@@ -1,17 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { createBrowserClient } from "@supabase/ssr";
-import Navbar from "./navbar";
 import BookList from "./booklist";
-
-type Book = {
-  id: number;
-  title: string;
-  author: string;
-  currently_reading: boolean;
-  num_stars: number;
-  img_url: string;
-};
+import type { Book } from "@/shared/lib/types";
 
 const Books = React.forwardRef<HTMLDivElement>(
   ({}, ref: React.ForwardedRef<HTMLDivElement>) => {
@@ -34,6 +25,8 @@ const Books = React.forwardRef<HTMLDivElement>(
 
       fetchData();
     }, []);
+
+    if (books.length === 0) return <div></div>;
 
     return (
       <div ref={ref} className="w-full pt-16">
