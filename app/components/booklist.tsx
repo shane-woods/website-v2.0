@@ -26,7 +26,7 @@ const BookList = ({ data }: { data: Book[] }) => {
       </div>
       <div className="flex flex-col items-center">
         <div className="p-3 mb-3 text-3xl">Books read in 2024</div>
-        <div className="flex flex-row space-x-28">
+        <div className="flex flex-row">
           {readBooks.map((book, index) => (
             <Book book={book} />
           ))}
@@ -38,9 +38,9 @@ const BookList = ({ data }: { data: Book[] }) => {
 
 const Book = ({ book }: { book: Book }) => {
   return (
-    <div key={book.id} className="flex flex-col">
+    <>
       {book.currently_reading ? (
-        <div>
+        <div key={book.id} className="flex flex-col">
           <Image
             src={book.img_url}
             alt="image of book cover"
@@ -52,7 +52,7 @@ const Book = ({ book }: { book: Book }) => {
           <Stars rating={book.num_stars} current={book.currently_reading} />
         </div>
       ) : (
-        <div>
+        <div key={book.id} className="flex flex-col">
           <Image
             src={book.img_url}
             alt="image of book cover"
@@ -64,7 +64,7 @@ const Book = ({ book }: { book: Book }) => {
           <Stars rating={book.num_stars} current={book.currently_reading} />
         </div>
       )}
-    </div>
+    </>
   );
 };
 
