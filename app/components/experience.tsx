@@ -12,15 +12,13 @@ type ExpProp = {
 const Experience = React.forwardRef<HTMLDivElement>(
   ({}, ref: React.ForwardedRef<HTMLDivElement>) => {
     const [index, setIndex] = useState<number>(0);
-    const [fidelityClass, setFidelityClass] = useState<string>(
-      "cursor-pointer border-l-2 border-black p-2 hover:border-blue-400"
-    );
-    const [imapClass, setImapClass] = useState<string>(
-      "cursor-pointer border-l-2 border-black p-2 hover:border-blue-400"
-    );
-    const [unhClass, setUnhClass] = useState<string>(
-      "cursor-pointer border-l-2 border-black p-2 hover:border-blue-400"
-    );
+    const unselectedClass =
+      "cursor-pointer border-l-2 border-black dark:border-white p-2 dark:text-slate-200";
+    const selectedClass =
+      "cursor-pointer p-2 border-l-2 border-blue-400 dark:text-slate-200";
+    const [fidelityClass, setFidelityClass] = useState<string>(selectedClass);
+    const [imapClass, setImapClass] = useState<string>(unselectedClass);
+    const [unhClass, setUnhClass] = useState<string>(unselectedClass);
     const experiences: ExpProp[] = [
       {
         company: "Fidelity",
@@ -49,31 +47,19 @@ const Experience = React.forwardRef<HTMLDivElement>(
       setIndex(n);
       switch (n) {
         case 0:
-          setFidelityClass("cursor-pointer p-2 border-l-2 border-blue-400");
-          setImapClass(
-            "cursor-pointer border-l-2 border-black p-2 hover:border-blue-400"
-          );
-          setUnhClass(
-            "cursor-pointer border-l-2 border-black p-2 hover:border-blue-400"
-          );
+          setFidelityClass(selectedClass);
+          setImapClass(unselectedClass);
+          setUnhClass(unselectedClass);
           break;
         case 1:
-          setImapClass("cursor-pointer p-2 border-l-2 border-blue-400");
-          setUnhClass(
-            "cursor-pointer border-l-2 border-black p-2 hover:border-blue-400"
-          );
-          setFidelityClass(
-            "cursor-pointer border-l-2 border-black p-2 hover:border-blue-400"
-          );
+          setImapClass(selectedClass);
+          setUnhClass(unselectedClass);
+          setFidelityClass(unselectedClass);
           break;
         case 2:
-          setUnhClass("cursor-pointer p-2 border-l-2 border-blue-400");
-          setImapClass(
-            "cursor-pointer border-l-2 border-black p-2 hover:border-blue-400"
-          );
-          setFidelityClass(
-            "cursor-pointer border-l-2 border-black p-2 hover:border-blue-400"
-          );
+          setUnhClass(selectedClass);
+          setImapClass(unselectedClass);
+          setFidelityClass(unselectedClass);
           break;
       }
     };
@@ -107,11 +93,15 @@ const Experience = React.forwardRef<HTMLDivElement>(
 
 const ExperienceCard = (info: ExpProp) => {
   return (
-    <div className="shadow-[0_3px_10px_rgb(0,0,0,0.7)] flex flex-col space-y-3 p-5 border w-5/6 rounded-lg">
-      <div className="font-bold text-2xl">{info.title}</div>
-      <div className="text-lg">{info.company}</div>
-      <div className="text-sm text-gray-500">{info.date}</div>
-      <div className="text-sm">{info.description}</div>
+    <div className="shadow-[0_3px_10px_rgb(0,0,0,0.7)] dark:shadow-[0_3px_10px_rgb(50,50,50,0.7)] flex flex-col space-y-3 p-5 w-5/6 rounded-lg bg-white dark:bg-slate-700">
+      <div className="font-bold text-2xl dark:text-slate-200">{info.title}</div>
+      <div className="text-lg dark:text-slate-200">{info.company}</div>
+      <div className="text-sm text-gray-500 dark:text-slate-300">
+        {info.date}
+      </div>
+      <div className="flex items-center text-sm h-10 dark:text-slate-200">
+        {info.description}
+      </div>
     </div>
   );
 };

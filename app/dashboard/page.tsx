@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { createBrowserClient } from "@supabase/ssr";
 import Link from "next/link";
-import SignOut from "../components/signout";
 import DashHeader from "../components/dashheader";
+import { useRouter } from "next/navigation";
 
 type DashlinkProp = {
   text: string;
@@ -12,9 +12,28 @@ type DashlinkProp = {
 
 const Dashboard = () => {
   const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   );
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data, error } = await supabase.auth.getSession();
+      if (error) {
+        console.log(error);
+      }
+      if (!data) {
+        console.log("COULDN'T GET SESSION DATA");
+        router.push("/");
+      } else {
+        console.log("Session is verified");
+      }
+    };
+
+    getUser();
+  }, []);
 
   return (
     <div>

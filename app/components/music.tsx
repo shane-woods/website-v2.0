@@ -23,7 +23,37 @@ const Music = React.forwardRef<HTMLDivElement>(
     //   fetchLikedSongs();
     // }, []); // Run the effect only once on mount
 
-    return <div ref={ref} className="flex flex-row w-full pt-16"></div>;
+    return (
+      <div ref={ref} className="flex flex-col w-full pt-16 items-center">
+        <h1 className="dark:text-slate-200">
+          Display your Spotify profile data
+        </h1>
+
+        <section id="profile">
+          <h2 className="dark:text-slate-200">
+            Logged in as <span id="displayName"></span>
+          </h2>
+          <span id="avatar"></span>
+          <ul>
+            <li className="dark:text-slate-200">
+              User ID: <span id="id"></span>
+            </li>
+            <li className="dark:text-slate-200">
+              Email: <span id="email"></span>
+            </li>
+            <li className="dark:text-slate-200">
+              Spotify URI: <a id="uri" href="#"></a>
+            </li>
+            <li className="dark:text-slate-200">
+              Link: <a id="url" href="#"></a>
+            </li>
+            <li className="dark:text-slate-200">
+              Profile Image: <span id="imgUrl"></span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    );
   }
 );
 

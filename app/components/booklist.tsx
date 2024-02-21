@@ -17,14 +17,14 @@ const BookList = ({ data }: { data: Book[] }) => {
   const currentlyReadingBooks: Book[] = data.filter(
     (book) => book.currently_reading
   );
-  const currentBook: Book = currentlyReadingBooks[0];
+  const currentBooks: Book[] = currentlyReadingBooks;
   const readBooks: Book[] = data.filter((book) => !book.currently_reading);
 
   return (
     <div className="flex flex-col w-full items-center space-y-12">
-      <h1 className="p-3 text-5xl">Books</h1>
+      <h1 className="p-3 text-5xl dark:text-slate-200">Books</h1>
       <div className="flex flex-col items-center w-full">
-        <CurrentBook currentBook={currentBook} />
+        <CurrentBooks currentBooks={currentBooks} />
         <ReadBooks books={readBooks} more={more} />
         {more ? (
           <ShowLess handleMore={handleMore} />
@@ -37,25 +37,36 @@ const BookList = ({ data }: { data: Book[] }) => {
 };
 
 type CurrentProps = {
-  currentBook: Book;
+  currentBooks: Book[];
 };
 
-const CurrentBook = (props: CurrentProps) => {
+const CurrentBooks = (props: CurrentProps) => {
   return (
-    <div className="flex flex-col items-center">
-      <div className="p-3 mb-3 text-3xl">Currently Reading</div>
-      <div key={props.currentBook.id} className="flex flex-col items-center">
-        <Image
-          src={props.currentBook.img_url}
-          alt="image of book cover"
-          height={300}
-          width={230}
-        />
-        <div className="text-lg font-bold mt-2 text-center">
-          {props.currentBook.title}
-        </div>
-        <div className="text-md mb-2">by {props.currentBook.author}</div>
-        <Stars rating={props.currentBook.num_stars} current={true} />
+    <div className="flex flex-col items-center mb-5">
+      <div className="p-3 mb-5 text-3xl dark:text-slate-200">
+        Currently Reading
+      </div>
+      <div className="flex flex-row items-stretch">
+        {props.currentBooks.map((currentBook) => (
+          <div
+            key={currentBook.id}
+            className="flex flex-col items-center w-1/2"
+          >
+            <Image
+              src={currentBook.img_url}
+              alt="image of book cover"
+              height={300}
+              width={230}
+            />
+            <div className="text-lg font-bold mt-2 text-center dark:text-slate-200">
+              {currentBook.title}
+            </div>
+            <div className="text-md mb-2 dark:text-slate-200">
+              by {currentBook.author}
+            </div>
+            <Stars rating={currentBook.num_stars} current={true} />
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -75,8 +86,10 @@ const ReadBooks = (props: ReadProps) => {
   }
   return (
     <>
-      <div className="p-3 mb-3 text-3xl">Books read in 2024</div>
-      <div className="grid grid-cols-3 w-3/4 place-items-center">
+      <div className="p-3 mb-5 text-3xl dark:text-slate-200">
+        Books read in 2024
+      </div>
+      <div className="grid grid-cols-3 w-3/4 place-items-center gap-10">
         {books.map((book, index) => (
           <Book book={book} />
         ))}
@@ -94,8 +107,10 @@ const Book = ({ book }: { book: Book }) => {
         height={150}
         width={80}
       />
-      <div className="text-md font-bold mt-1">{book.title}</div>
-      <div className="text-sm">by {book.author}</div>
+      <div className="text-md font-bold mt-1 dark:text-slate-200">
+        {book.title}
+      </div>
+      <div className="text-sm dark:text-slate-200">by {book.author}</div>
       <Stars rating={book.num_stars} current={book.currently_reading} />
     </div>
   );
@@ -137,7 +152,7 @@ const ShowMore = (prop: ButtonProp) => {
   };
 
   return (
-    <button className="py-2" onClick={handleClick}>
+    <button className="py-2 dark:text-slate-200" onClick={handleClick}>
       Show More
     </button>
   );
@@ -148,7 +163,7 @@ const ShowLess = (prop: ButtonProp) => {
     prop.handleMore(false);
   };
   return (
-    <button className="py-2" onClick={handleClick}>
+    <button className="py-2 dark:text-slate-200" onClick={handleClick}>
       Show Less
     </button>
   );

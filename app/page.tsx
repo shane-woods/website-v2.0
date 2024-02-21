@@ -7,6 +7,7 @@ import Experience from "./components/experience";
 import Footer from "./components/footer";
 import Music from "./components/music";
 import Navbar from "./components/navbar";
+import { ThemeButton } from "./components/themebutton";
 
 const Home = () => {
   const homeRef = useRef<HTMLDivElement>(null);
@@ -44,21 +45,23 @@ const Home = () => {
   };
 
   return (
-    <main>
-      <div className="flex flex-row">
-        <Navbar handleClick={handleClick} />
-        <div ref={homeRef} className=" absolute left-72 flex flex-col ">
-          <div className="flex flex-col items-center min-h-screen m-5 justify-evenly">
-            <About ref={aboutRef} />
-            <Experience ref={experienceRef} />
-            <Music ref={musicRef} />
-            <Books ref={booksRef} />
-            <Contact ref={contactRef} />
-          </div>
-          <Footer />
+    <div className="flex flex-row  bg-slate-50 dark:bg-slate-900">
+      <Navbar handleClick={handleClick} />
+      <div
+        ref={homeRef}
+        className="absolute left-72 flex flex-col bg-slate-50 dark:bg-slate-900"
+      >
+        <div className="flex flex-col items-center min-h-screen m-5 justify-evenly">
+          <ThemeButton />
+          <About ref={aboutRef} />
+          <Experience ref={experienceRef} />
+          <Music ref={musicRef} />
+          <Books ref={booksRef} />
+          <Contact ref={contactRef} />
         </div>
+        <Footer />
       </div>
-    </main>
+    </div>
   );
 };
 

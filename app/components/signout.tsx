@@ -8,11 +8,10 @@ const SignOut: React.FC = () => {
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   );
-
   const router = useRouter();
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    const { error } = await supabase.auth.signOut();
     router.push("/");
   };
 

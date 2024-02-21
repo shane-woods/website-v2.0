@@ -1,47 +1,50 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { MouseEventHandler } from "react";
-import { usePathname } from "next/navigation";
-
-type NavitemProp = {
-  text: string;
-  emoji: string;
-  handleClick: (targetId: string) => void;
-};
+import React, { MouseEventHandler, useState } from "react";
 
 type NavbarProp = {
   handleClick: (targetId: string) => void;
 };
 
 const Navbar = (prop: NavbarProp) => {
+  const [selected, setSelected] = useState<string>("");
+  const handleClick = (link: string) => {
+    setSelected(link);
+    prop.handleClick(link);
+  };
   return (
     <>
-      <div className="fixed flex flex-col p-5 min-w-max min-h-screen">
-        <Name handleClick={() => prop.handleClick("home")} />
+      <div className="fixed flex flex-col p-5 min-w-max min-h-screen bg-slate-50 dark:bg-slate-900">
+        <Name handleClick={() => handleClick("home")} />
         <Navitem
           text="About"
           emoji="📝"
-          handleClick={() => prop.handleClick("about")}
+          handleClick={() => handleClick("about")}
+          selected={selected}
         />
         <Navitem
           text="Experience"
           emoji="💼"
-          handleClick={() => prop.handleClick("experience")}
+          handleClick={() => handleClick("experience")}
+          selected={selected}
         />
         <Navitem
           text="Music"
           emoji="🎧"
-          handleClick={() => prop.handleClick("music")}
+          handleClick={() => handleClick("music")}
+          selected={selected}
         />
         <Navitem
           text="Books"
           emoji="📚"
-          handleClick={() => prop.handleClick("books")}
+          handleClick={() => handleClick("books")}
+          selected={selected}
         />
         <Navitem
           text="Contact"
           emoji="☎️"
-          handleClick={() => prop.handleClick("contact")}
+          handleClick={() => handleClick("contact")}
+          selected={selected}
         />
         <Links />
       </div>
@@ -59,12 +62,15 @@ const Name = (prop: NameProp) => {
     prop.handleClick(targetId);
   };
   return (
-    <div className="flex flex-col p-3 m-3">
+    <div className="flex flex-col p-3 m-3 items-start">
       <div
         onClick={onClick}
-        className="font-bold text-3xl text-center cursor-pointer"
+        className="font-bold text-3xl text-center cursor-pointer dark:text-slate-200"
       >
         Shane Woods
+      </div>
+      <div className="w-52 text-sm font-semibold mt-2 dark:text-slate-200">
+        Full Stack Engineer at Fidelity Investments
       </div>
     </div>
   );
@@ -78,7 +84,7 @@ const Links = () => {
   const spotify_url: string =
     "https://uolyxvlqilyhwhgtuqah.supabase.co/storage/v1/object/sign/website-logos/spotify-color-svgrepo-com.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ3ZWJzaXRlLWxvZ29zL3Nwb3RpZnktY29sb3Itc3ZncmVwby1jb20ucG5nIiwiaWF0IjoxNzA3MDk2NjM4LCJleHAiOjIwMjI0NTY2Mzh9.6cGwuLfglUQtGzew4OPEKnAJ0UrPi89VuYZaA3USYlk&t=2024-02-05T01%3A30%3A38.215Z";
   return (
-    <div className="flex flex-row p-5 space-x-3 ">
+    <div className="flex flex-row p-5 space-x-3">
       <Link href="mailto:shwoods35@gmail.com">
         <Image src={gmail_url} height={30} width={30} alt="Gmail logo" />
       </Link>
@@ -92,16 +98,23 @@ const Links = () => {
   );
 };
 
+type NavitemProp = {
+  text: string;
+  emoji: string;
+  selected: string;
+  handleClick: (targetId: string) => void;
+};
+
 const Navitem = (navitem: NavitemProp) => {
   const onClick = () => {
     const targetId = `${navitem.text.toLowerCase()}`;
     navitem.handleClick(targetId);
   };
-  const pathname = usePathname();
-  const isActive: boolean = pathname === `/${navitem.text.toLowerCase()}`;
+  const isActive: boolean =
+    navitem.selected === `${navitem.text.toLowerCase()}`;
   const className: string = isActive
-    ? "text-blue-400 border-b-2 border-blue-400 text-2xl"
-    : "border-transparent border-b-2 hover:border-blue-400 text-2xl";
+    ? "text-blue-400 border-b-2 border-blue-400 text-2xl dark:text-blue-400"
+    : "border-transparent border-b-2 hover:border-blue-400 text-2xl dark:text-slate-200";
   return (
     <div
       onClick={onClick}
