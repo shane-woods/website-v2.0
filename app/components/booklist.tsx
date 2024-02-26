@@ -22,7 +22,6 @@ const BookList = ({ data }: { data: Book[] }) => {
 
   return (
     <div className="flex flex-col w-full items-center space-y-12">
-      <h1 className="p-3 text-5xl dark:text-slate-200">Books</h1>
       <div className="flex flex-col items-center w-full">
         <CurrentBooks currentBooks={currentBooks} />
         <ReadBooks books={readBooks} more={more} />
@@ -107,10 +106,12 @@ const Book = ({ book }: { book: Book }) => {
         height={150}
         width={80}
       />
-      <div className="text-md font-bold mt-1 dark:text-slate-200">
+      <div className="text-md font-bold mt-1 dark:text-slate-200 text-center">
         {book.title}
       </div>
-      <div className="text-sm dark:text-slate-200">by {book.author}</div>
+      <div className="text-sm dark:text-slate-200 text-center">
+        by {book.author}
+      </div>
       <Stars rating={book.num_stars} current={book.currently_reading} />
     </div>
   );

@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Navbar from "./navbar";
 
 type ExpProp = {
   company: string;
@@ -67,9 +66,9 @@ const Experience = React.forwardRef<HTMLDivElement>(
     return (
       <div
         ref={ref}
-        className="flex flex-row space-x-10 w-full items-center justify-center pt-16"
+        className="flex flex-row w-full items-center justify-center pt-16"
       >
-        <div className="flex flex-col h-auto min-w-max">
+        <div className="flex flex-col h-auto w-1/6">
           <div className={fidelityClass} onClick={() => handleClick(0)}>
             Fidelity
           </div>
@@ -93,7 +92,7 @@ const Experience = React.forwardRef<HTMLDivElement>(
 
 const ExperienceCard = (info: ExpProp) => {
   return (
-    <div className="shadow-[0_3px_10px_rgb(0,0,0,0.7)] dark:shadow-[0_3px_10px_rgb(50,50,50,0.7)] flex flex-col space-y-3 p-5 w-5/6 rounded-lg bg-white dark:bg-slate-700">
+    <div className="shadow-[0_3px_10px_rgb(0,0,0,0.7)] dark:shadow-[0_3px_10px_rgb(50,50,50,0.7)] flex flex-col space-y-3 p-5 w-5/6 rounded-lg bg-white dark:bg-slate-700 mr-16">
       <div className="font-bold text-2xl dark:text-slate-200">{info.title}</div>
       <div className="text-lg dark:text-slate-200">{info.company}</div>
       <div className="text-sm text-gray-500 dark:text-slate-300">

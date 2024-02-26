@@ -55,7 +55,6 @@ const Home = () => {
           <ThemeButton />
           <About ref={aboutRef} />
           <Experience ref={experienceRef} />
-          <Music ref={musicRef} />
           <Books ref={booksRef} />
           <Contact ref={contactRef} />
         </div>

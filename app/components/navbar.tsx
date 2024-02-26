@@ -29,12 +29,6 @@ const Navbar = (prop: NavbarProp) => {
           selected={selected}
         />
         <Navitem
-          text="Music"
-          emoji="🎧"
-          handleClick={() => handleClick("music")}
-          selected={selected}
-        />
-        <Navitem
           text="Books"
           emoji="📚"
           handleClick={() => handleClick("books")}
