@@ -40,16 +40,20 @@ type CurrentProps = {
 };
 
 const CurrentBooks = (props: CurrentProps) => {
+  const flexStyle =
+    props.currentBooks.length == 1
+      ? "flex flex-row justify-center"
+      : "flex flex-row items-stretch";
   return (
     <div className="flex flex-col items-center mb-5">
       <div className="p-3 mb-5 text-3xl dark:text-slate-200">
         Currently Reading
       </div>
-      <div className="flex flex-row items-stretch">
+      <div className={flexStyle}>
         {props.currentBooks.map((currentBook) => (
           <div
             key={currentBook.id}
-            className="flex flex-col items-center w-1/2"
+            className="flex flex-col items-center w-5/6"
           >
             <Image
               src={currentBook.img_url}
@@ -60,7 +64,7 @@ const CurrentBooks = (props: CurrentProps) => {
             <div className="text-lg font-bold mt-2 text-center dark:text-slate-200">
               {currentBook.title}
             </div>
-            <div className="text-md mb-2 dark:text-slate-200">
+            <div className="text-md text-center mb-2 dark:text-slate-200">
               by {currentBook.author}
             </div>
             <Stars rating={currentBook.num_stars} current={true} />

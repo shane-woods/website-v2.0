@@ -1,11 +1,9 @@
 "use client";
-import { MutableRefObject, RefObject, useRef } from "react";
+import { RefObject, useRef } from "react";
 import About from "./components/about";
 import Books from "./components/books";
-import Contact from "./components/contact";
 import Experience from "./components/experience";
 import Footer from "./components/footer";
-import Music from "./components/music";
 import Navbar from "./components/navbar";
 import { ThemeButton } from "./components/themebutton";
 
@@ -13,9 +11,7 @@ const Home = () => {
   const homeRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
-  const musicRef = useRef<HTMLDivElement>(null);
   const booksRef = useRef<HTMLDivElement>(null);
-  const contactRef = useRef<HTMLDivElement>(null);
 
   const handleClick = (targetId: string) => {
     const targetRef: RefObject<HTMLElement> | null = getTargetRef(targetId);
@@ -33,12 +29,8 @@ const Home = () => {
         return aboutRef;
       case "experience":
         return experienceRef;
-      case "music":
-        return musicRef;
       case "books":
         return booksRef;
-      case "contact":
-        return contactRef;
       default:
         return null;
     }
@@ -56,7 +48,6 @@ const Home = () => {
           <About ref={aboutRef} />
           <Experience ref={experienceRef} />
           <Books ref={booksRef} />
-          <Contact ref={contactRef} />
         </div>
         <Footer />
       </div>

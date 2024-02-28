@@ -34,12 +34,6 @@ const Navbar = (prop: NavbarProp) => {
           handleClick={() => handleClick("books")}
           selected={selected}
         />
-        <Navitem
-          text="Contact"
-          emoji="☎️"
-          handleClick={() => handleClick("contact")}
-          selected={selected}
-        />
         <Links />
       </div>
     </>

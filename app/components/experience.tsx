@@ -21,7 +21,7 @@ const Experience = React.forwardRef<HTMLDivElement>(
     const experiences: ExpProp[] = [
       {
         company: "Fidelity",
-        title: "Full Stack Software Engineer",
+        title: "Full-Stack Software Engineer",
         date: "Starting June 2024",
         description:
           "Previously interned at Fidelity during summer 2023, going back full time in June 2024",

@@ -171,7 +171,7 @@ const UpdateBook = () => {
                 </div>
               </div>
               <button
-                className="p-2 border border-black bg-blue-400 rounded-md"
+                className="p-2 mt-2 border border-black bg-blue-400 rounded-md"
                 onClick={handleUpdate}
               >
                 Update Book
