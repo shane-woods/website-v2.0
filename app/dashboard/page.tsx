@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { createBrowserClient } from "@supabase/ssr";
 import Link from "next/link";
 import DashHeader from "../components/dashheader";
@@ -18,22 +18,30 @@ const Dashboard = () => {
 
   const router = useRouter();
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const getUser = async () => {
       const { data, error } = await supabase.auth.getSession();
+      console.log(data);
       if (error) {
         console.log(error);
       }
-      if (!data) {
+      if (data.session === null) {
         console.log("COULDN'T GET SESSION DATA");
-        router.push("/");
+        router.push("/login");
       } else {
+        setLoading(false);
         console.log("Session is verified");
       }
     };
 
     getUser();
   }, []);
+
+  if (loading) {
+    return <div></div>;
+  }
 
   return (
     <div>

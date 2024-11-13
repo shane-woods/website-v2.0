@@ -1,6 +1,7 @@
+import { createBrowserClient } from "@supabase/ssr";
 import Image from "next/image";
 import Link from "next/link";
-import React, { MouseEventHandler, useState } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 
 type NavbarProp = {
   handleClick: (targetId: string) => void;
@@ -66,11 +67,11 @@ const Name = (prop: NameProp) => {
 
 const Links = () => {
   const gmail_url: string =
-    "https://uolyxvlqilyhwhgtuqah.supabase.co/storage/v1/object/sign/website-logos/gmail-svgrepo-com.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ3ZWJzaXRlLWxvZ29zL2dtYWlsLXN2Z3JlcG8tY29tLnBuZyIsImlhdCI6MTcwNzA5NjU1NiwiZXhwIjoyMDIyNDU2NTU2fQ.xoOvElafzDLv9d6kfLGI25M8smlgAcidSIO6qR3fKYA&t=2024-02-05T01%3A29%3A16.769Z";
+    "https://pdnrqxfgxysljqjlszen.supabase.co/storage/v1/object/sign/website-logos/gmail-svgrepo-com.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ3ZWJzaXRlLWxvZ29zL2dtYWlsLXN2Z3JlcG8tY29tLnBuZyIsImlhdCI6MTczMTQ0MDc2MywiZXhwIjoyMDQ2ODAwNzYzfQ.Cvcr7Bbi5OfdOLEz-sPQ_ymTTshaS96EY8lkA-WUZRQ&t=2024-11-12T19%3A46%3A03.236Z";
   const linkedin_url: string =
-    "https://uolyxvlqilyhwhgtuqah.supabase.co/storage/v1/object/sign/website-logos/linkedin-svgrepo-com.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ3ZWJzaXRlLWxvZ29zL2xpbmtlZGluLXN2Z3JlcG8tY29tLnBuZyIsImlhdCI6MTcwNzA5NjYyMSwiZXhwIjoyMDIyNDU2NjIxfQ.x-UrtsJn447GUNNnlL9zrZfyVM4Jz5S3S-Ads5mh5eM&t=2024-02-05T01%3A30%3A21.802Z";
+    "https://pdnrqxfgxysljqjlszen.supabase.co/storage/v1/object/sign/website-logos/linkedin-svgrepo-com.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ3ZWJzaXRlLWxvZ29zL2xpbmtlZGluLXN2Z3JlcG8tY29tLnBuZyIsImlhdCI6MTczMTQ0MDc3OCwiZXhwIjoyMDQ2ODAwNzc4fQ.IgHHyYlp3u6YY6hqkJliP6ezn8bjpprKTmDvbxxZJhc&t=2024-11-12T19%3A46%3A17.877Z";
   const spotify_url: string =
-    "https://uolyxvlqilyhwhgtuqah.supabase.co/storage/v1/object/sign/website-logos/spotify-color-svgrepo-com.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ3ZWJzaXRlLWxvZ29zL3Nwb3RpZnktY29sb3Itc3ZncmVwby1jb20ucG5nIiwiaWF0IjoxNzA3MDk2NjM4LCJleHAiOjIwMjI0NTY2Mzh9.6cGwuLfglUQtGzew4OPEKnAJ0UrPi89VuYZaA3USYlk&t=2024-02-05T01%3A30%3A38.215Z";
+    "https://pdnrqxfgxysljqjlszen.supabase.co/storage/v1/object/sign/website-logos/spotify-color-svgrepo-com.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ3ZWJzaXRlLWxvZ29zL3Nwb3RpZnktY29sb3Itc3ZncmVwby1jb20ucG5nIiwiaWF0IjoxNzMxNDQwNzkzLCJleHAiOjIwNDY4MDA3OTN9.7Z27XFl3qB9lVd7p5GVKO4FH4ECxU96wTH5RlKvRtiY&t=2024-11-12T19%3A46%3A33.541Z";
   return (
     <div className="flex flex-row p-5 space-x-3">
       <Link href="mailto:shwoods35@gmail.com">
