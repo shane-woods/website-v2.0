@@ -7,10 +7,6 @@ pipeline {
         REGISTRY_URL = 'https://hub.docker.com/repository/docker/shwoods35/nextjs-app/general'
     }
     stages {
-        stage('Initialize') {
-            def dockerHome = tool 'myDocker'
-            env.PATH = "${dockerHome}/bin:${env.PATH}"
-        }
         stage('Checkout') {
             steps {
                 // Pull the latest code from your Git repository
