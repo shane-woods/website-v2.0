@@ -17,7 +17,7 @@ pipeline{
         stage("Start"){
             steps{
                 nodejs("my-nodejs") {
-                    sh 'npm run start'
+                    sh 'npm run start &'
                 }
                 echo "App started successfully"
             }
