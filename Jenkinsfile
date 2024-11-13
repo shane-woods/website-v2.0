@@ -6,14 +6,14 @@ pipeline{
             steps{
                 nodejs("my-nodejs") {
                     sh 'npm install'
-                    sh 'npm build'
+                    sh 'npm run build'
                 }
             }
         }
         stage("Start"){
             steps{
                 nodejs("my-nodejs") {
-                    sh 'npm start'
+                    sh 'npm run start'
                 }
                 echo "App started successfully"
             }
