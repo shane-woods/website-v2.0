@@ -6,7 +6,7 @@ pipeline{
         NEXT_PUBLIC_SUPABASE_ANON_KEY= credentials('jenkins-supabase-anon-key')
         EC2_USER = 'ec2-user'
         EC2_IP = 'ec2-3-15-155-73.us-east-2.compute.amazonaws.com'
-        SSH_KEY = credentials('ec2-ssh-key')
+        SSH_KEY = 'ec2-ssh-key'
     }
     stages{
         stage("Build"){
